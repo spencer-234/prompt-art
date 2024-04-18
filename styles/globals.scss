@@ -1,0 +1,24 @@
+@use "./general-styles.scss" as general;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+a, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0px 20px;
+    max-width: general.$screen-lg;
+}

@@ -1,0 +1,93 @@
+@use "../../styles/general-styles.scss" as general;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo-image {
+    transform: rotate(14.5deg);
+  }
+
+  .user-options {
+    position: relative;
+
+    .desktop {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      @media screen and (min-width: general.$screen-md) {
+        display: flex;
+      }
+
+      .btn {
+        border-radius: 5px;
+        padding: 5px 10px;
+        color: black;
+
+        &.orange {
+            background-color: general.$main-orange;
+
+            &:hover {
+                background-color: orange;
+            }
+        }
+
+        &.pink {
+            background-color: rgb(255, 150, 168);
+
+            &:hover {
+                background-color: rgb(255, 118, 141);
+            }
+        }
+      }
+    }
+
+    .mobile {
+      @media screen and (min-width: general.$screen-md) {
+        display: none;
+      }
+    }
+
+    div {
+      .user-img {
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+      }
+
+      .menu {
+        white-space: nowrap;
+        position: absolute;
+        right: 10px;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+        border: 2px solid general.$main-orange;
+        border-radius: 5px;
+        padding: 10px 10px 10px 20px;
+        animation: growDown 300ms forwards;
+        transform-origin: top center;
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        @keyframes growDown {
+            0% {
+              transform: scaleY(0);
+            }
+            80% {
+              transform: scaleY(1.1);
+            }
+            100% {
+              transform: scaleY(1);
+            }
+          }
+      }
+    }
+  }
+}
