@@ -1,4 +1,6 @@
 @use "./general-styles.scss" as general;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 
 * {
     margin: 0;
@@ -9,6 +11,7 @@
 body {
     background-color: black;
     color: white;
+    font-family: "Inter", sans-serif;
 }
 
 a, a:visited {
@@ -16,9 +19,17 @@ a, a:visited {
     text-decoration: none;
 }
 
+input {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
 .app {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0px 20px;
     max-width: general.$screen-lg;
+    min-width: general.$screen-xsm;
 }

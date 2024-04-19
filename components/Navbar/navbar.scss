@@ -9,6 +9,44 @@
     transform: rotate(14.5deg);
   }
 
+  .sign-out {
+    border: none;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: flex-end;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .btn {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &.orange {
+        background-color: general.$main-orange;
+
+        &:hover {
+            background-color: orange;
+        }
+    }
+
+    &.pink {
+        background-color: general.$main-pink;
+
+        &:hover {
+            background-color: rgb(255, 118, 141);
+        }
+    }
+  }
+
   .user-options {
     position: relative;
 
@@ -22,27 +60,6 @@
         display: flex;
       }
 
-      .btn {
-        border-radius: 5px;
-        padding: 5px 10px;
-        color: black;
-
-        &.orange {
-            background-color: general.$main-orange;
-
-            &:hover {
-                background-color: orange;
-            }
-        }
-
-        &.pink {
-            background-color: rgb(255, 150, 168);
-
-            &:hover {
-                background-color: rgb(255, 118, 141);
-            }
-        }
-      }
     }
 
     .mobile {
@@ -71,6 +88,12 @@
         padding: 10px 10px 10px 20px;
         animation: growDown 300ms forwards;
         transform-origin: top center;
+        background-color: black;
+        z-index: 10;
+
+        &.wide {
+          top: 50px;
+        }
 
         a:hover {
           text-decoration: underline;
