@@ -1,0 +1,99 @@
+@use "../../styles/general-styles.scss" as general;
+
+.post-form {
+  h2,
+  p {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    @include general.styledText;
+    font-size: 30px;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    label {
+      display: flex;
+      gap: 10px;
+      font-size: 20px;
+
+      span {
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      input,
+      textarea {
+        width: 80%;
+        max-width: 500px;
+        font-size: 15px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+
+      &.image-label {
+        width: fit-content;
+        flex-direction: column;
+        width: 100%;
+        max-width: 575px;
+
+        @media screen and (min-width: 375px) {
+          flex-direction: row;
+        }
+
+        .add-image {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          cursor: pointer;
+
+          input {
+            display: none;
+          }
+        }
+        .image-preview {
+          width: 100px;
+          height: auto;
+          @media screen and (min-width: 375px) {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      align-self: flex-end;
+      align-items: center;
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        padding: 5px 10px;
+        font-size: 15px;
+        border-radius: 15px;
+        background-color: general.$main-orange;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: orange;
+        }
+      }
+    }
+  }
+}

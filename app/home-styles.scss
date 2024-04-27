@@ -8,7 +8,7 @@
     flex-direction: column;
     gap: 40px;
 
-    p {
+    .header-text {
         margin-top: 20px;
         max-width: 490px;
         font-weight: bolder;
@@ -16,9 +16,7 @@
         text-align: center;
 
         span {
-            background-image: linear-gradient(to right, general.$main-pink, general.$main-orange);
-            background-clip: text;
-            color: transparent;
+            @include general.styledText;
         }
     }
 

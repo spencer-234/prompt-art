@@ -10,6 +10,7 @@ const Navbar = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const username = session?.user.email.split('@')[0];
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -36,22 +37,20 @@ const Navbar = () => {
       {session?.user ? (
         <div className="user-options">
           <div className="desktop">
-            <Link href="#" className="btn pink">
+            <Link href="/create" className="btn pink" onClick={() => setMenuOpen(false)}>
               Create Post
             </Link>
-            <Link href="#" className="btn orange">
+            <Link href={`/profile/${username}`} className="btn orange" onClick={() => setMenuOpen(false)}>
               My Profile
             </Link>
-            <Link href="#" className="desktop">
               <Image
-                src="/assets/default.jpg"
-                width={45}
-                height={45}
+                src={session?.user.image ? session?.user.image :"/assets/default.jpg"}
+                width={50}
+                height={50}
                 className="user-img"
                 alt="profile_picture"
                 onClick={() => setMenuOpen((prev) => !prev)}
               />
-            </Link>
             {menuOpen && (
               <div className="menu wide">
                 <button
@@ -68,17 +67,17 @@ const Navbar = () => {
           </div>
           <div className="mobile">
             <Image
-              src="/assets/default.jpg"
-              width={45}
-              height={45}
+              src={session?.user.image ? session?.user.image :"/assets/default.jpg"}
+              width={50}
+              height={50}
               className="user-img mobile"
               onClick={() => setMenuOpen((prev) => !prev)}
               alt="profile_picture"
             />
             {menuOpen && (
               <div className="menu">
-                <Link href="#">My Profile</Link>
-                <Link href="#">Create Post</Link>
+                <Link href={`/profile/${username}`} onClick={() => setMenuOpen(false)}>My Profile</Link>
+                <Link href="/create" onClick={() => setMenuOpen(false)}>Create Post</Link>
                 <button
                   onClick={() => {
                     setMenuOpen((prev) => !prev);

@@ -1,9 +1,16 @@
 @use "../../styles/general-styles.scss" as general;
 
 .navbar {
+  width: 100%;
+  position: sticky;
+  height: 60px;
+  padding-top: 20px;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: black;
+  margin-bottom: 30px;
 
   .logo-image {
     transform: rotate(14.5deg);

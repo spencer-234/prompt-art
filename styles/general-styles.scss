@@ -12,3 +12,12 @@ $screen-lg: 1024px;
 
 $screen-xl: 1280px;
 
+@mixin styledText {
+  background-image: linear-gradient(
+    to right,
+    $main-pink,
+    $main-orange
+  );
+  background-clip: text;
+  color: transparent;
+}
