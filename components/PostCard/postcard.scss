@@ -1,6 +1,6 @@
 .post-card {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(22, 22, 22);
   width: 100%;
   max-width: 500px;
@@ -38,7 +38,7 @@
     }
 
     .time {
-        color: rgb(138, 138, 138);
+      color: rgb(138, 138, 138);
     }
   }
 
@@ -46,9 +46,23 @@
     display: flex;
     align-self: flex-end;
     gap: 20px;
+    align-items: center;
 
     a:hover {
       text-decoration: underline;
+    }
+
+    button {
+      background-color: rgb(255, 85, 85);
+      border: none;
+      border-radius: 15px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgb(255, 44, 44);
+      }
     }
   }
 }

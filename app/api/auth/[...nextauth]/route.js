@@ -16,7 +16,10 @@ const handler = NextAuth({
                 email: session.user.email
             })
 
+            const name = session.user.email.split('@')[0];
+            session.user.username = name;
             session.user.id = sessionUser._id;
+            session.user.image = sessionUser.image;
 
             return session;
         },

@@ -16,7 +16,11 @@ const PostSchema = new Schema({
     ai: {
         type: String,
         required: [true, "AI used for image required."],
-    }
+    },
+    filename : {
+        type: String,
+        required: [true, "Filename is required."],
+    },
 })
 
 PostSchema.set('timestamps', true);

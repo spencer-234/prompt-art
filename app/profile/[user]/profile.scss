@@ -6,14 +6,49 @@
     flex-direction: column;
     gap: 20px;
 
-    .profile-picture {
-        width: 100%;
-        height: auto;
-        max-width: 100px;
+    label {
+        position: relative;
+        display: flex;
+        align-items: center;
         border-radius: 50%;
+        width: 100px;
+
+        .profile-picture {
+            width: 100%;
+            height: auto;
+            max-width: 100px;
+            border-radius: 50%;
+        }
+
+        input {
+            display: none;
+        }
+
+        .add-image-icon {
+            position: absolute;
+            right: 0;
+            top: 70px;
+            cursor: pointer;
+        }
+    }
+
+    .save-btn {
+        background-color: general.$main-orange;
+        padding: 5px 10px;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: orange;
+        }
     }
 
     h2 {
+        width: 80%;
+        text-align: center;
         @include general.styledText;
     }
     

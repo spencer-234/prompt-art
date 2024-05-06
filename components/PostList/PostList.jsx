@@ -3,8 +3,6 @@
 import "./postlist.scss";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { imageStorage } from "@utils/firebase";
-import { ref, getDownloadURL } from "firebase/storage";
 import { useSession } from "next-auth/react";
 import PostCard from "@components/PostCard/PostCard";
 
@@ -20,14 +18,7 @@ const PostList = ({ url }) => {
       const res = await fetch(url);
       const data = await res.json();
 
-      for (let i = 0; i < data.length; i++) {
-        getDownloadURL(ref(imageStorage, `uploads/${data[i].image}`)).then(
-          (url) => {
-            data[i].imageUrl = url;
-            setData((prev) => [...prev, data[i]]);
-          }
-        );
-      }
+      setData(data);
     };
 
     fetchPosts();
@@ -40,7 +31,6 @@ const PostList = ({ url }) => {
           {data.map((post, index) => (
             <PostCard
               post={post}
-              image={post.imageUrl}
               key={index}
               userPost={`/profile/${username}` === pathname ? true : false}
             />

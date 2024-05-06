@@ -2,9 +2,26 @@ import "./postcard.scss";
 import Image from "next/image";
 import moment from "moment";
 import Link from "next/link";
+import { deleteId } from "@app/CRUD_fucntions/deleteId";
+import { deleteImage } from "@app/CRUD_fucntions/deleteImage";
 
-const PostCard = ({ post, image, userPost }) => {
+const PostCard = ({ post, userPost }) => {
   const fromNow = moment(post.createdAt).fromNow();
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    let res = await deleteImage(post.filename);
+    if (res === true) {
+      await deleteId(`/api/post/${post._id}`)
+      .then(data => {
+        if (data) {
+          window.location.reload();
+        } else {
+          alert('Post deletion failed');
+        }
+      })
+    }
+  }
 
   return (
     <div className="post-card">
@@ -29,7 +46,7 @@ const PostCard = ({ post, image, userPost }) => {
         Prompt: <span>{post.prompt}</span>
       </p>
       <Image
-        src={image}
+        src={post.image}
         width="0"
         height="0"
         sizes="100vw"
@@ -38,8 +55,8 @@ const PostCard = ({ post, image, userPost }) => {
       />
       {userPost && (
         <div className="post-options">
-          <Link href="#">Edit</Link>
-          <Link href="#">Delete</Link>
+          <Link href={`/edit/post/${post._id}`}>Edit</Link>
+          <button type="button" onClick={(e) => handleDelete(e)} className="delete-btn">Delete</button>
         </div>
       )}
     </div>

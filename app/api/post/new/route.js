@@ -3,7 +3,7 @@ import { connectToDB } from "@utils/database";
 import Post from "@models/post";
 
 export const POST = async (req) => {
-    const { userId, prompt, image, ai } = await req.json();
+    const { userId, prompt, image, ai, filename } = await req.json();
     try {
         await connectToDB();
         const newPost = new Post({
@@ -11,6 +11,7 @@ export const POST = async (req) => {
             prompt,
             image,
             ai,
+            filename,
         })
 
         await newPost.save();
