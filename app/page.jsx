@@ -5,8 +5,7 @@ const Home = () => {
   return (
     <section className='home'>
         <p className='header-text'>Share your <span>AI-Generated</span> image and the prompt with the world!</p>
-        <input type="text"  placeholder='Search for a prompt...'/>
-        <PostList url={"/api/post"}/>
+        <PostList url={"/api/post"} homepage={true}/>
     </section>
   )
 }
