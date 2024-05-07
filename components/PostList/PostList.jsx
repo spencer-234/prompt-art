@@ -15,8 +15,9 @@ const PostList = ({ url, homepage }) => {
   // fetch posts then get the download url for each image from firebase
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: "no-store" });
       const data = await res.json();
+      console.log(data);
 
       setData(data);
     };
@@ -25,20 +26,29 @@ const PostList = ({ url, homepage }) => {
   }, []);
 
   const handleResults = (e) => {
-    setSearchResults(data.filter((post) => post.prompt.includes(e.target.value)));
-  }
-
+    setSearchResults(
+      data.filter((post) => post.prompt.includes(e.target.value))
+    );
+  };
 
   return (
     <section className="post-list">
-      {homepage && <input type="text" placeholder="Search for a prompt..." onChange={handleResults}/>}
+      {homepage && (
+        <input
+          type="text"
+          placeholder="Search for a prompt..."
+          onChange={handleResults}
+        />
+      )}
       {!searchResults && data ? (
         <>
           {data.map((post, index) => (
             <PostCard
               post={post}
               key={index}
-              userPost={`/profile/${session?.user.username}` === pathname ? true : false}
+              userPost={
+                `/profile/${session?.user.username}` === pathname ? true : false
+              }
             />
           ))}
         </>
@@ -48,7 +58,9 @@ const PostList = ({ url, homepage }) => {
             <PostCard
               post={post}
               key={index}
-              userPost={`/profile/${session?.user.username}` === pathname ? true : false}
+              userPost={
+                `/profile/${session?.user.username}` === pathname ? true : false
+              }
             />
           ))}
         </>
